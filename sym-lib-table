@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "RF_Module")(type "Legacy")(uri "C:/Users/marur/Documents/KiCad/libraries/kicad-library/library/RF_Module.lib")(options "")(descr ""))
+  (lib (name "RF_WiFi")(type "Legacy")(uri "C:/Users/marur/Documents/KiCad/libraries/kicad-library/library/RF_WiFi.lib")(options "")(descr ""))
+)
