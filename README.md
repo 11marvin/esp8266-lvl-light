@@ -12,6 +12,16 @@ This project contains the KiCad design files for a replacement control board use
 - I2C bus and GPIO for additional device integration
 
 
+## Board
+
+32 mm x 20 mm (without antenna overlap)
+
+### Front
+![Front side](images/top.png)
+
+### Back
+![Back side](images/bot.png)
+
 ## Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
