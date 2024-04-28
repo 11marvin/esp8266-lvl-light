@@ -13,15 +13,13 @@ esphome:
   comment: Dimmable ceiling light with CCT and motion detector.
   project:
     name: Marvin's.${friendly_name}
-    version: "1.0.0"
+    version: "1.0.1"
+
   on_boot:
-    - light.turn_on:
-        id: mylight 
-        brightness: 90%
-        color_temperature: 4700K
+    - script.execute: offline_light
 
 dashboard_import:
-  package_import_url: github://11marvin/esp8266-lvl-light/Firmware/esp8266-ceiling-light.yaml@main
+  package_import_url: github://11marvin/esp8266-lvl-light/Firmware/esp8266-ceiling-light.yaml@master
 
 wifi:
 
@@ -45,7 +43,7 @@ ota:
 
 script:
   - id: offline_light
-    mode: restart     # Light will be kept on during 15 minutes since
+    mode: restart     # Light will be kept on during 10 minutes since
                       # the latest time the script is executed
     then:
       - light.turn_on:
@@ -65,8 +63,6 @@ binary_sensor:
     id: motion
     pin:
       number: GPIO13
-      # mode: INPUT_PULLUP
-      # inverted: True
     name: motion
     device_class: motion
     on_press:
@@ -89,38 +85,43 @@ switch:
 light:
   - platform: color_temperature
     id: mylight
-    name: None
+    name: "Light"
     brightness: output_brightness
     color_temperature: output_temperature
-    # cold_white_color_temperature: 6536 K
-    cold_white_color_temperature: 5000 K
+    cold_white_color_temperature: 4600 K
     warm_white_color_temperature: 2800 K
+
   - platform: monochromatic
-    name: "LED"
+    name: "Notification LED"
     output: output_component1
     id: led
+
   - platform: monochromatic
-    name: "brightness"
+    name: "Set light brightness output"
+    entity_category: config
     output: output_brightness
     id: brightness
+
   - platform: monochromatic
-    name: "temperature"
+    name: "Set light temperature output"
+    entity_category: config
     output: output_temperature
     id: temperature
+    
 output:
   - platform: esp8266_pwm
     id: output_component1
     pin: GPIO2
     inverted: True
+    
   - platform: esp8266_pwm
     id: output_brightness
     min_power: 0.06
     zero_means_zero: True
-    # frequency: 10000 Hz
     pin: GPIO12
     inverted: False
+    
   - platform: esp8266_pwm
     id: output_temperature
-    # frequency: 10000 Hz
     pin: GPIO14
     inverted: True
