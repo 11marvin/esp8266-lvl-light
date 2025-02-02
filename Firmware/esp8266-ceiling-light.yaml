@@ -13,7 +13,7 @@ esphome:
   comment: Dimmable ceiling light with CCT and motion detector.
   project:
     name: Marvin's.${friendly_name}
-    version: "1.0.1"
+    version: "1.0.2"
 
   on_boot:
     - script.execute: offline_light
@@ -39,6 +39,7 @@ api:
 
 # Enable Home Assistant OTA
 ota:
+  platform: esphome
 
 
 script:
