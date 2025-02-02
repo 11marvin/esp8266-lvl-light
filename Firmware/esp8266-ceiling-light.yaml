@@ -96,18 +96,6 @@ light:
     name: "Notification LED"
     output: output_component1
     id: led
-
-  - platform: monochromatic
-    name: "Set light brightness output"
-    entity_category: config
-    output: output_brightness
-    id: brightness
-
-  - platform: monochromatic
-    name: "Set light temperature output"
-    entity_category: config
-    output: output_temperature
-    id: temperature
     
 output:
   - platform: esp8266_pwm
